@@ -49,11 +49,13 @@ rates = { "Zerodha":    { "Brokerage": [40,0,40,40],
 #st.write("Brokerage Calculator")
 st.title("Brokerage Calculator")
 
-inp,dummy,outp1,sep,outp2 = st.beta_columns((3,1,1.2,0.2,1))
+inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.beta_columns((2,1,1.2,0.2,1,2,2))
 
-broker = inp.radio("Broker", brokers, index=1)
+#broker = inp.radio("Broker", brokers, index=1)
+broker = inp.selectbox("Broker", brokers,index=0)
 
-instrtype = inp.radio("Type of Instrument", instrtypes, index=3)
+#instrtype = inp.radio("Type of Instrument", instrtypes, index=3)
+instrtype = inp.selectbox("Type of Instrument", instrtypes, index=3)
 
 # buy = inp.number_input("Buy",value=0.0,step=0.05)
 # sell = inp.number_input("Sell",value=0.0,step=0.05)
