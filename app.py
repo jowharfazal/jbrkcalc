@@ -11,7 +11,7 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
 
     #st.write(broker+':',instrtype) #,instrkey)
     if qty>0 and (buy>0 or sell > 0):
-        if broker.upper() in ["ZERODHA","PAYTM"] and instrkey!=1:
+        if broker.upper() in ["ZERODHA","PAYTM","UPSTOX"] and instrkey!=1:
             brokeragerate = (rates[broker]["Brokerage"][instrkey])/2
             buybrokerage = buyamt / 100 * ( 0.03 if broker.upper()=="ZERODHA" else 0.05)
             buybrokerage = brokeragerate if buybrokerage > brokeragerate else buybrokerage
@@ -45,12 +45,19 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
 
 instrtypes = ['EQ Intraday', 'EQ Delivery', 'Futures', 'Options']
 instrtypesdict = {'EQ Intraday':0, 'EQ Delivery':1, 'Futures':2, 'Options':3}
-brokers = ["Zerodha","TradePlus","PayTM"]
+brokers = ["Zerodha", "UpStox", "TradePlus", "PayTM"]
 rates = { "Zerodha":    { "Brokerage": [40,0,40,40], 
                           "STT": [0.025,0.1,0.01,0.05],
                           "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
                           "ClearingChrg": [0,0,0,0],
                           "SEBIChrg": [0.0001,0.0001,0.0001,0.0001],
+                          "StampDuty": [0.003,0.015,0.002,0.003],
+                        },
+           "UpStox":    { "Brokerage": [40,0,40,40], 
+                          "STT": [0.025,0.1,0.01,0.05],
+                          "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
+                          "ClearingChrg": [0,0,0,0],
+                          "SEBIChrg": [0.00005,0.00005,0.00005,0.00005],
                           "StampDuty": [0.003,0.015,0.002,0.003],
                         },
            "TradePlus": { "Brokerage": [18,0,18,0], 
@@ -73,7 +80,7 @@ rates = { "Zerodha":    { "Brokerage": [40,0,40,40],
 #st.write("Brokerage Calculator")
 st.title("Brokerage Calculator")
 
-inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.beta_columns((1.7,0.3,1.3,0.1,1.1,2.2,2.2))
+inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.beta_columns((1.7,0.2,1.5,0.1,1.1,2.2,2.2))
 
 #broker = inp.radio("Broker", brokers, index=1)
 broker = inp.selectbox("Broker", brokers,index=0)
@@ -106,13 +113,13 @@ charges = calc_charges(broker, instrtype, instrtypesdict[instrtype],rates,buy,se
 totcharges = round(sum(charges),2)
 pl = round((sell-buy)*qty-totcharges,2)
 
-outp1.write('brokerage ')
-outp1.write("stt ")
-outp1.write("exchtrnchrg ")
-outp1.write("clearingchrg ")
-outp1.write("gst ")
-outp1.write("sebicharg ")
-outp1.write("stampduty ")
+outp1.write('Brokerage')
+outp1.write("STT")
+outp1.write("Exch.Trn. Chrg")
+outp1.write("Clearing Chrg")
+outp1.write("GST ")
+outp1.write("SEBI Chrg")
+outp1.write("Stamp Duty")
 outp1.markdown("""---""")
 
 sep.write(': ')
