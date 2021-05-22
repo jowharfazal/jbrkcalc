@@ -135,7 +135,7 @@ for charge in charges:
     outp2.write(charge)
 outp2.markdown("""---""")
 
-outp1.write("Tot Charges")
+outp1.write("Total Charges")
 outp1.markdown("""---""")
 sep.write(': ')
 sep.markdown("""---""")
