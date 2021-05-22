@@ -10,8 +10,16 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
     turnover = buyamt+sellamt
 
     #st.write(broker+':',instrtype) #,instrkey)
-    if qty>0:
-        brokerage = rates[broker]["Brokerage"][instrkey]
+    if qty>0 and (buy>0 or sell > 0):
+        if broker.upper() in ["ZERODHA","PAYTM"] and instrkey!=1:
+            brokeragerate = (rates[broker]["Brokerage"][instrkey])/2
+            buybrokerage = buyamt / 100 * ( 0.03 if broker.upper()=="ZERODHA" else 0.05)
+            buybrokerage = brokeragerate if buybrokerage > brokeragerate else buybrokerage
+            sellbrokerage = sellamt / 100 * ( 0.03 if broker.upper()=="ZERODHA" else 0.05)
+            sellbrokerage = brokeragerate if sellbrokerage > brokeragerate else sellbrokerage
+            brokerage = buybrokerage+sellbrokerage
+        else:
+            brokerage = rates[broker]["Brokerage"][instrkey]
     else:
         brokerage = 0
     stt = round(rates[broker]["STT"][instrkey] * ( turnover if instrkey==1 else sellamt ) / 100,2)
@@ -34,7 +42,7 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
 
 instrtypes = ['EQ Intraday', 'EQ Delivery', 'Futures', 'Options']
 instrtypesdict = {'EQ Intraday':0, 'EQ Delivery':1, 'Futures':2, 'Options':3}
-brokers = ["Zerodha","TradePlus"]
+brokers = ["Zerodha","TradePlus","PayTM"]
 rates = { "Zerodha":    { "Brokerage": [40,0,40,40], 
                           "STT": [0.025,0.1,0.01,0.05],
                           "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
@@ -48,7 +56,14 @@ rates = { "Zerodha":    { "Brokerage": [40,0,40,40],
                           "ClearingChrg": [0,0,0,0],
                           "SEBIChrg": [0.0001,0.0001,0.0001,0.0001],
                           "StampDuty": [0.003,0.015,0.002,0.003],
-                        } 
+                        },
+           "PayTM":    { "Brokerage": [20,0,20,20], 
+                          "STT": [0.025,0.1,0.01,0.05],
+                          "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
+                          "ClearingChrg": [0,0,0,0],
+                          "SEBIChrg": [0.00005,0.00005,0.00005,0.00005],
+                          "StampDuty": [0.003,0.015,0.002,0.003],
+                        }
         }
          
 
