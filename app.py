@@ -17,7 +17,10 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
             buybrokerage = brokeragerate if buybrokerage > brokeragerate else buybrokerage
             sellbrokerage = sellamt / 100 * ( 0.03 if broker.upper()=="ZERODHA" else 0.05)
             sellbrokerage = brokeragerate if sellbrokerage > brokeragerate else sellbrokerage
-            brokerage = buybrokerage+sellbrokerage
+            if instrkey==3:
+                brokerage = 40
+            else:
+                brokerage = buybrokerage+sellbrokerage
         else:
             brokerage = rates[broker]["Brokerage"][instrkey]
     else:
