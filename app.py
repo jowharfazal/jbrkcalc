@@ -10,11 +10,17 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
     turnover = buyamt+sellamt
 
     #st.write(broker+':',instrtype) #,instrkey)
-    brokerage = rates[broker]["Brokerage"][instrkey]
+    if qty>0:
+        brokerage = rates[broker]["Brokerage"][instrkey]
+    else:
+        brokerage = 0
     stt = round(rates[broker]["STT"][instrkey] * ( turnover if instrkey==1 else sellamt ) / 100,2)
     exchtrnchrg = round(rates[broker]["ExchTrnChrg"][instrkey] * turnover / 100,2)
     clearingchrg = round(rates[broker]["ClearingChrg"][instrkey] * turnover / 100,2)
-    gst = round((brokerage+exchtrnchrg+clearingchrg) * GST / 100,2)
+    if qty>0:
+        gst = round((brokerage+exchtrnchrg+clearingchrg) * GST / 100,2)
+    else:
+        gst = 0
     sebicharg = round(rates[broker]["SEBIChrg"][instrkey] * turnover / 100,2)
     stampduty = round(rates[broker]["StampDuty"][instrkey] * buyamt / 100,2)
 
