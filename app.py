@@ -4,6 +4,11 @@ import streamlit as st
 
 GST = 18
 
+RIGHT_ALIGN_TAG = "text-align:right;"
+LEFT_ALIGN_TAG = "text-align:left;"
+CENTER_ALIGN_TAG = "text-align:center;"
+
+
 def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
     buyamt = buy*qty
     sellamt = sell*qty
@@ -78,9 +83,9 @@ rates = { "Zerodha":    { "Brokerage": [40,0,40,40],
          
 
 #st.write("Brokerage Calculator")
-st.title("Trade P&L Calculator")
+st.title("Brokerage Calculator")
 
-inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.beta_columns((1.7,0.2,1.5,0.1,1.1,2.2,2.2))
+inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.beta_columns((1.7,0.2,1.5,0.1,1,2.2,2.2))
 
 #broker = inp.radio("Broker", brokers, index=1)
 broker = inp.selectbox("Broker", brokers,index=0)
@@ -117,10 +122,10 @@ outp1.write('Brokerage')
 outp1.write("STT")
 outp1.write("Exch.Trn. Chrg")
 outp1.write("Clearing Chrg")
-outp1.write("GST ")
+outp1.write("GST")
 outp1.write("SEBI Chrg")
 outp1.write("Stamp Duty")
-outp1.markdown("""---""")
+#outp1.markdown("""~~~""")
 
 sep.write(': ')
 sep.write(": ")
@@ -129,21 +134,33 @@ sep.write(": ")
 sep.write(": ")
 sep.write(": ")
 sep.write(": ")
-sep.markdown("""---""")
+#sep.markdown("""---""")
 
 for charge in charges:
-    outp2.write(charge)
-outp2.markdown("""---""")
+    out_html = '<p style="text-align:right;">'+str(charge)+'</p>'
+    outp2.write(out_html, unsafe_allow_html=True)
+#outp2.markdown("""---""")
 
-outp1.write("Total Charges")
+outp1.write("**Tot Charges**")
 outp1.markdown("""---""")
 sep.write(': ')
 sep.markdown("""---""")
-outp2.write(totcharges)
+
+totcharges_html = '<p style="text-align:right;"><b>'+str(totcharges)+'</b></p>'
+print(totcharges_html)
+
+outp2.write(totcharges_html, unsafe_allow_html=True)
 outp2.markdown("""---""")
-outp1.write("P&L")
-outp2.write(pl)
+outp1.write('<p style="font-size:115%"><b>P/L</b></p>', unsafe_allow_html=True)
+if pl>0:
+    pl_html = '<p style="text-align:right;color:green;font-size:115%"><b>'+str(pl)+'</b></p>'
+elif pl<0:
+    pl_html = '<p style="text-align:right;color:red"><b>'+str(pl)+'</b></p>'
+else:
+    pl_html = '<p style="text-align:right><b>'+str(pl)+'</b></p>'
+
+outp2.write(pl_html, unsafe_allow_html=True)
 sep.write(': ')
-sep.markdown("""---""")
-outp1.markdown("""---""")
-outp2.markdown("""---""")
+# sep.markdown("""---""")
+# outp1.markdown("""---""")
+# outp2.markdown("""---""")
