@@ -1,4 +1,4 @@
-""" Brokerage Calculator for Zerodha & Tradeplus """
+""" P/L Calculator for some Indian brokers """
 
 import streamlit as st
 
@@ -82,8 +82,7 @@ rates = { "Zerodha":    { "Brokerage": [40,0,40,40],
         }
          
 
-#st.write("Brokerage Calculator")
-st.title("Brokerage Calculator")
+st.title("P/L Calculator")
 
 inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.beta_columns((1.7,0.2,1.5,0.1,1,2.2,2.2))
 
