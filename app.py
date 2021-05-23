@@ -146,7 +146,6 @@ sep.write(': ')
 sep.markdown("""---""")
 
 totcharges_html = '<p style="text-align:right;"><b>'+str(totcharges)+'</b></p>'
-print(totcharges_html)
 
 outp2.write(totcharges_html, unsafe_allow_html=True)
 outp2.markdown("""---""")
