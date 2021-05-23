@@ -1,4 +1,4 @@
-""" Brokerage Calculator for Zerodha & Tradeplus """
+""" Brokerage Calculator for Zerodha, Upstox, PayTM & Tradeplus """
 
 import streamlit as st
 
