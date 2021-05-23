@@ -1,4 +1,4 @@
-""" P/L Calculator for some Indian brokers """
+""" Brokerage Calculator for Zerodha & Tradeplus """
 
 import streamlit as st
 
@@ -82,7 +82,7 @@ rates = { "Zerodha":    { "Brokerage": [40,0,40,40],
         }
          
 
-st.title("P/L Calculator")
+st.title("Trade P&L Calculator")
 
 inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.beta_columns((1.7,0.2,1.5,0.1,1,2.2,2.2))
 
@@ -140,22 +140,22 @@ for charge in charges:
     outp2.write(out_html, unsafe_allow_html=True)
 #outp2.markdown("""---""")
 
-outp1.write("**Tot Charges**")
+outp1.write('<p style="font-size:110%"><b>Tot Charges</b></p>', unsafe_allow_html=True)
 outp1.markdown("""---""")
 sep.write(': ')
 sep.markdown("""---""")
 
-totcharges_html = '<p style="text-align:right;"><b>'+str(totcharges)+'</b></p>'
+totcharges_html = '<p style="color:Blue;text-align:right;"><b>'+f"{totcharges:,.2f}"+'</b></p>'
 
 outp2.write(totcharges_html, unsafe_allow_html=True)
 outp2.markdown("""---""")
 outp1.write('<p style="font-size:115%"><b>P/L</b></p>', unsafe_allow_html=True)
 if pl>0:
-    pl_html = '<p style="text-align:right;color:green;font-size:115%"><b>'+str(pl)+'</b></p>'
+    pl_html = '<p style="text-align:right;color:green;font-size:115%"><b>'+f"{pl:,.2f}"+'</b></p>'
 elif pl<0:
-    pl_html = '<p style="text-align:right;color:red"><b>'+str(pl)+'</b></p>'
+    pl_html = '<p style="text-align:right;color:red"><b>'+f"{pl:,.2f}"+'</b></p>'
 else:
-    pl_html = '<p style="text-align:right><b>'+str(pl)+'</b></p>'
+    pl_html = '<p style="text-align:right><b>'+f"{pl:,.2f}"+'</b></p>'
 
 outp2.write(pl_html, unsafe_allow_html=True)
 sep.write(': ')
