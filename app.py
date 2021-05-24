@@ -1,7 +1,7 @@
 """ Brokerage Calculator for Zerodha, Upstox, PayTM & Tradeplus """
 
 import streamlit as st
-st.set_page_config(page_title="Trade P/L calculator",page_icon=':chart:')
+st.set_page_config(page_title="Trade P/L calculator",page_icon='rupees_symbol_1.ico')
 
 GST = 18
 
