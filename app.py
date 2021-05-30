@@ -134,9 +134,9 @@ totcharges_html = '<p style="color:Blue;text-align:right;"><b>'+f"{totcharges:,.
 outp2.write(totcharges_html, unsafe_allow_html=True)
 outp1.write('<p style="font-size:115%"><b>P/L</b></p>', unsafe_allow_html=True)
 if pl>0:
-    pl_html = '<p style="text-align:right;color:green;font-size:115%"><b>'+f"{pl:,.2f}"+'</b></p>'
+    pl_html = '<p style="text-align:right;color:DarkGreen;font-size:115%;border:2px solid Black;"><b>'+f"{pl:,.2f}"+'</b></p>'
 elif pl<0:
-    pl_html = '<p style="text-align:right;color:red"><b>'+f"{pl:,.2f}"+'</b></p>'
+    pl_html = '<p style="text-align:right;color:DarkRed;font-size:115%;border:2px solid Black;"><b>'+f"{pl:,.2f}"+'</b></p>'
 else:
     pl_html = '<p style="text-align:right><b>'+f"{pl:,.2f}"+'</b></p>'
 
