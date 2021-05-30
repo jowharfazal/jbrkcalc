@@ -44,7 +44,7 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
     return [brokerage,stt,exchtrnchrg+clearingchrg,gst,sebicharg,stampduty]
 
 
-instrtypes = ['EQ Intraday', 'EQ Delivery', 'Futures', 'Options']
+instrtypes = ['Intraday', 'Delivery', 'Futures', 'Options']
 instrtypesdict = {'Intraday':0, 'Delivery':1, 'Futures':2, 'Options':3}
 brokers = ["Zerodha", "UpStox", "TradePlus", "PayTM"]
 rates = { "Zerodha":    { "Brokerage": [40,0,40,40], 
