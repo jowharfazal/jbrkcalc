@@ -44,8 +44,8 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
     return [brokerage,stt,exchtrnchrg+clearingchrg,gst,sebicharg,stampduty]
 
 
-instrtypes = ['Intraday', 'Delivery', 'Futures', 'Options']
-instrtypesdict = {'Intraday':0, 'Delivery':1, 'Futures':2, 'Options':3}
+instrtypes = ['Intraday', 'Deliv', 'Futures', 'Options']
+instrtypesdict = {'Intraday':0, 'Deliv':1, 'Futures':2, 'Options':3}
 brokers = ["Zerodha", "UpStox", "Trade+", "PayTM"]
 rates = { "Zerodha":    { "Brokerage": [40,0,40,40], 
                           "STT": [0.025,0.1,0.01,0.05],
