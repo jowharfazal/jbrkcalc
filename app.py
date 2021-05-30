@@ -80,7 +80,7 @@ rates = { "Zerodha":    { "Brokerage": [40,0,40,40],
 
 st.title("Trade P/L Calculator")
 
-broker = st.radio("Broker", brokers, index=1)
+broker = st.radio("Broker", brokers)
 instrtype = st.radio("Type of Instrument", instrtypes, index=3)
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
