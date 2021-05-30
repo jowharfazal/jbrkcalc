@@ -41,7 +41,7 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
     # pl = (sellamt-buyamt-totalcharges
 
 
-    return [brokerage,stt,exchtrnchrg+clearingchrg,gst,sebicharg,stampduty]
+    return [brokerage,stt,round(exchtrnchrg+clearingchrg,2),gst,sebicharg,stampduty]
 
 
 instrtypes = ['Intraday', 'Deliv', 'Futures', 'Options']
