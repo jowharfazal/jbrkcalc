@@ -108,7 +108,7 @@ charges = calc_charges(broker, instrtype, instrtypesdict[instrtype],rates,buy,se
 totcharges = round(sum(charges),2)
 pl = round((sell-buy)*qty-totcharges,2)
 
-breakeven = round(totcharges/qty) if qty>0 else 0
+breakeven = round(totcharges/qty,2) if qty>0 else 0
 
 outp1.write('<p style="font-size:85%">Brokerage</p>', unsafe_allow_html=True)
 outp1.write('<p style="font-size:85%">STT</p>', unsafe_allow_html=True)
