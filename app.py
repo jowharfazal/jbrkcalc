@@ -116,7 +116,7 @@ outp1.write('<p style="font-size:85%">Exch+Clearing</p>', unsafe_allow_html=True
 outp1.write('<p style="font-size:85%">GST</p>', unsafe_allow_html=True)
 outp1.write('<p style="font-size:85%">SEBI Chrg</p>', unsafe_allow_html=True)
 outp1.write('<p style="font-size:85%">Stamp Duty</p>', unsafe_allow_html=True)
-outp1.write('<p style="font-size:85%">Break-even</p>', unsafe_allow_html=True)
+outp1.write('<p style="font-size:85%;color:Blue">Break-even</p>', unsafe_allow_html=True)
 
 sep.write('<p style="font-size:85%">:</p>', unsafe_allow_html=True)
 sep.write('<p style="font-size:85%">:</p>', unsafe_allow_html=True)
@@ -130,7 +130,7 @@ for charge in charges:
     out_html = '<p style="text-align:right;font-size:85%">'+str(charge)+'</p>'
     outp2.write(out_html, unsafe_allow_html=True)
 
-out_html = '<p style="text-align:right;font-size:85%">'+str(breakeven)+'</p>'
+out_html = '<p style="text-align:right;font-size:85%;color:Blue">'+str(breakeven)+'</p>'
 outp2.write(out_html, unsafe_allow_html=True)
 
 outp1.write('<p style="font-size:100%"><b>Tot Charges</b></p>', unsafe_allow_html=True)
