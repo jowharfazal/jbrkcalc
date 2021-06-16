@@ -130,7 +130,7 @@ for charge in charges:
     out_html = '<p style="text-align:right;font-size:85%">'+str(charge)+'</p>'
     outp2.write(out_html, unsafe_allow_html=True)
 
-out_html = '<p style="text-align:right;font-size:85%">'+str(break-even)+'</p>'
+out_html = '<p style="text-align:right;font-size:85%">'+str(breakeven)+'</p>'
 outp2.write(out_html, unsafe_allow_html=True)
 
 outp1.write('<p style="font-size:100%"><b>Tot Charges</b></p>', unsafe_allow_html=True)
