@@ -108,13 +108,17 @@ charges = calc_charges(broker, instrtype, instrtypesdict[instrtype],rates,buy,se
 totcharges = round(sum(charges),2)
 pl = round((sell-buy)*qty-totcharges,2)
 
+breakeven = round(totcharges/qty) if qty>0 else 0
+
 outp1.write('<p style="font-size:85%">Brokerage</p>', unsafe_allow_html=True)
 outp1.write('<p style="font-size:85%">STT</p>', unsafe_allow_html=True)
 outp1.write('<p style="font-size:85%">Exch+Clearing</p>', unsafe_allow_html=True)
 outp1.write('<p style="font-size:85%">GST</p>', unsafe_allow_html=True)
 outp1.write('<p style="font-size:85%">SEBI Chrg</p>', unsafe_allow_html=True)
 outp1.write('<p style="font-size:85%">Stamp Duty</p>', unsafe_allow_html=True)
+outp1.write('<p style="font-size:85%">Break-even</p>', unsafe_allow_html=True)
 
+sep.write('<p style="font-size:85%">:</p>', unsafe_allow_html=True)
 sep.write('<p style="font-size:85%">:</p>', unsafe_allow_html=True)
 sep.write('<p style="font-size:85%">:</p>', unsafe_allow_html=True)
 sep.write('<p style="font-size:85%">:</p>', unsafe_allow_html=True)
@@ -125,6 +129,9 @@ sep.write('<p style="font-size:85%">:</p>', unsafe_allow_html=True)
 for charge in charges:
     out_html = '<p style="text-align:right;font-size:85%">'+str(charge)+'</p>'
     outp2.write(out_html, unsafe_allow_html=True)
+
+out_html = '<p style="text-align:right;font-size:85%">'+str(break-even)+'</p>'
+outp2.write(out_html, unsafe_allow_html=True)
 
 outp1.write('<p style="font-size:100%"><b>Tot Charges</b></p>', unsafe_allow_html=True)
 sep.write(': ')
