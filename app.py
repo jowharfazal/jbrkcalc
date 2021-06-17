@@ -27,6 +27,7 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
             brokerage = rates[broker]["Brokerage"][instrkey]
     else:
         brokerage = 0
+    brokerage = round(brokerage,2)
     stt = round(rates[broker]["STT"][instrkey] * ( turnover if instrkey==1 else sellamt ) / 100,2)
     exchtrnchrg = round(rates[broker]["ExchTrnChrg"][instrkey] * turnover / 100,2)
     clearingchrg = round(rates[broker]["ClearingChrg"][instrkey] * turnover / 100,2)
