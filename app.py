@@ -41,7 +41,8 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
     # totalcharges = brokerage+stt+exchtrnchrg+clearingchrg+gst+sebicharg+stampduty
     # pl = (sellamt-buyamt-totalcharges
 
-
+    If instrtype=='Deliv':
+        brokerage = 15.3
     return [brokerage,stt,round(exchtrnchrg+clearingchrg,2),gst,sebicharg,stampduty]
 
 
@@ -111,7 +112,11 @@ pl = round((sell-buy)*qty-totcharges,2)
 
 breakeven = round(totcharges/qty,2) if qty>0 else 0
 
-outp1.write('<p style="font-size:85%">Brokerage</p>', unsafe_allow_html=True)
+If instrtype=='Deliv':
+    outp1.write('<p style="font-size:85%">Brkrg./DP.Chrg</p>', unsafe_allow_html=True)
+else:
+    outp1.write('<p style="font-size:85%">Brokerage</p>', unsafe_allow_html=True)
+    
 outp1.write('<p style="font-size:85%">STT</p>', unsafe_allow_html=True)
 outp1.write('<p style="font-size:85%">Exch+Clearing</p>', unsafe_allow_html=True)
 outp1.write('<p style="font-size:85%">GST</p>', unsafe_allow_html=True)
