@@ -112,7 +112,7 @@ pl = round((sell-buy)*qty-totcharges,2)
 
 breakeven = round(totcharges/qty,2) if qty>0 else 0
 
-If instrtype=='Deliv':
+if instrtype=='Deliv':
     outp1.write('<p style="font-size:85%">Brkrg./DP.Chrg</p>', unsafe_allow_html=True)
 else:
     outp1.write('<p style="font-size:85%">Brokerage</p>', unsafe_allow_html=True)
