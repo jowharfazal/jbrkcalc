@@ -42,7 +42,7 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
     # pl = (sellamt-buyamt-totalcharges
 
     if instrtype == 'Deliv':
-        brokerage = 15.3
+        brokerage = 15.93
     return [brokerage,stt,round(exchtrnchrg+clearingchrg,2),gst,sebicharg,stampduty]
 
 
