@@ -1,4 +1,4 @@
-""" Trade P/L Calculator for Zerodha/Upstox/Tradeplus/PayTM """
+""" Trade P/L Calculator for Zerodha/Finvasia/Tradeplus/PayTM """
 
 import streamlit as st
 
@@ -13,7 +13,7 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
 
     #st.write(broker+':',instrtype) #,instrkey)
     if qty>0 and (buy>0 or sell > 0):
-        if broker.upper() in ["ZERODHA","PAYTM","UPSTOX"] and instrkey!=1:
+        if broker.upper() in ["ZERODHA","PAYTM"] and instrkey!=1:
             brokeragerate = (rates[broker]["Brokerage"][instrkey])/2
             buybrokerage = buyamt / 100 * ( 0.03 if broker.upper()=="ZERODHA" else 0.05)
             buybrokerage = brokeragerate if buybrokerage > brokeragerate else buybrokerage
@@ -42,13 +42,13 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
     # pl = (sellamt-buyamt-totalcharges
 
     if instrtype == 'Deliv':
-        brokerage = 15.93
+        brokerage = 15.3
     return [brokerage,stt,round(exchtrnchrg+clearingchrg,2),gst,sebicharg,stampduty]
 
 
 instrtypes = ['Intraday', 'Deliv', 'Futures', 'Options']
 instrtypesdict = {'Intraday':0, 'Deliv':1, 'Futures':2, 'Options':3}
-brokers = ["Zerodha", "UpStox", "Trade+", "PayTM"]
+brokers = ["Zerodha", "Finvasia", "Trade+", "PayTM"]
 rates = { "Zerodha":    { "Brokerage": [40,0,40,40], 
                           "STT": [0.025,0.1,0.01,0.05],
                           "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
@@ -56,7 +56,7 @@ rates = { "Zerodha":    { "Brokerage": [40,0,40,40],
                           "SEBIChrg": [0.0001,0.0001,0.0001,0.0001],
                           "StampDuty": [0.003,0.015,0.002,0.003],
                         },
-           "UpStox":    { "Brokerage": [40,0,40,40], 
+           "Finvasia":    { "Brokerage": [0,0,0,0], 
                           "STT": [0.025,0.1,0.01,0.05],
                           "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
                           "ClearingChrg": [0,0,0,0],
@@ -86,7 +86,7 @@ broker = st.radio("Broker", brokers)
 instrtype = st.radio("Type of Instrument", instrtypes, index=3)
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.beta_columns((1.7,0.2,1.5,0.1,1,2.2,2.2))
+inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.columns((1.7,0.2,1.5,0.1,1,2.2,2.2))
 
 buy = inp.text_input("Buy",value=0)
 sell = inp.text_input("Sell",value=0)
