@@ -86,7 +86,7 @@ broker = st.radio("Broker", brokers)
 instrtype = st.radio("Type of Instrument", instrtypes, index=3)
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.columns((1.6,0.2,1.5,0.1,1,2.2,2.6))
+inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.columns((1.6,0.2,1.5,0.1,1,2.4,2.4))
 
 buy = inp.text_input("Buy",value=0)
 sell = inp.text_input("Sell",value=0)
