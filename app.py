@@ -48,15 +48,8 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
 
 instrtypes = ['Intraday', 'Deliv', 'Futures', 'Options']
 instrtypesdict = {'Intraday':0, 'Deliv':1, 'Futures':2, 'Options':3}
-brokers = ["Zerodha", "Finvasia", "Trade+", "PayTM"]
-rates = { "Zerodha":    { "Brokerage": [40,0,40,40], 
-                          "STT": [0.025,0.1,0.01,0.05],
-                          "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
-                          "ClearingChrg": [0,0,0,0],
-                          "SEBIChrg": [0.0001,0.0001,0.0001,0.0001],
-                          "StampDuty": [0.003,0.015,0.002,0.003],
-                        },
-           "Finvasia":    { "Brokerage": [0,0,0,0], 
+brokers = ["Trade+", "Finvasia", "PayTM","Zerodha" ]
+rates = { "Finvasia":    { "Brokerage": [0,0,0,0], 
                           "STT": [0.025,0.1,0.01,0.05],
                           "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
                           "ClearingChrg": [0,0,0,0],
@@ -76,6 +69,13 @@ rates = { "Zerodha":    { "Brokerage": [40,0,40,40],
                           "ClearingChrg": [0,0,0,0],
                           "SEBIChrg": [0.00005,0.00005,0.00005,0.00005],
                           "StampDuty": [0.003,0.015,0.002,0.003],
+           "Zerodha":    { "Brokerage": [40,0,40,40], 
+                          "STT": [0.025,0.1,0.01,0.05],
+                          "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
+                          "ClearingChrg": [0,0,0,0],
+                          "SEBIChrg": [0.0001,0.0001,0.0001,0.0001],
+                          "StampDuty": [0.003,0.015,0.002,0.003],
+                        }
                         }
         }
          
