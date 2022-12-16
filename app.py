@@ -50,7 +50,7 @@ instrtypes = ['Intraday', 'Deliv', 'Futures', 'Options']
 instrtypesdict = {'Intraday':0, 'Deliv':1, 'Futures':2, 'Options':3}
 brokers = ["Trade+", "Finvasia", "PayTM","Zerodha" ]
 rates = { "Finvasia":    { "Brokerage": [0,0,0,0], 
-                          "STT": [0.025,0.1,0.01,0.05],
+                          "STT": [0.026,0.1,0.01,0.05],
                           "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
                           "ClearingChrg": [0,0,0,0],
                           "SEBIChrg": [0.00005,0.00005,0.00005,0.00005],
