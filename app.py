@@ -142,7 +142,7 @@ outp2.write(out_html, unsafe_allow_html=True)
 outp1.write('<p style="font-size:100%"><b>Tot Charges</b></p>', unsafe_allow_html=True)
 sep.write(': ')
 
-totcharges_html = '<p style="color:Black;text-align:right;"><b>'+f"{totcharges:,.2f}"+'</b></p>'
+totcharges_html = '<p style="color:Yellow;text-align:right;"><b>'+f"{totcharges:,.2f}"+'</b></p>'
 
 outp2.write(totcharges_html, unsafe_allow_html=True)
 outp1.write('<p style="font-size:115%"><b>P/L</b></p>', unsafe_allow_html=True)
