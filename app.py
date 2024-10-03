@@ -82,9 +82,9 @@ rates = { "Finvasia":    { "Brokerage": [0.2,0.2,0.2,0.2],
 
 st.title("Trade P/L Calculator")
 
-broker = st.radio("Broker", brokers)
-instrtype = st.radio("Type of Instrument", instrtypes, index=3)
-st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+broker = st.radio("Broker", brokers, horizontal=True)
+instrtype = st.radio("Type of Instrument", instrtypes, index=3, horizontal=True)
+# st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 inp,dummy,outp1,sep,outp2,dummy1,dummy2 = st.columns((1.6,0.2,1.5,0.1,1.3,2.3,2.1))
 
