@@ -49,7 +49,7 @@ def calc_charges(broker, instrtype, instrkey,rates,buy,sell,qty):
 instrtypes = ['Intraday', 'Deliv', 'Futures', 'Options']
 instrtypesdict = {'Intraday':0, 'Deliv':1, 'Futures':2, 'Options':3}
 brokers = ["Finvasia", "Trade+", "PayTM","Zerodha" ]
-rates = { "Finvasia":    { "Brokerage": [0.2,0.2,0.2,0.2], 
+rates = { "Finvasia":    { "Brokerage": [5,5,5,5], 
                           "STT": [0.026,0.1,0.0125,0.065],
                           "ExchTrnChrg": [0.00345,0.00345,0.002,0.053],
                           "ClearingChrg": [0,0,0,0],
