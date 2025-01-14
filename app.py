@@ -82,7 +82,7 @@ rates = { "Finvasia":    { "Brokerage": [5,5,5,5],
 
 st.title("Trade P/L Calculator")
 
-broker = st.radio("Broker", brokers, index=2 horizontal=True)
+broker = st.radio("Broker", brokers, index=2, horizontal=True)
 instrtype = st.radio("Type of Instrument", instrtypes, index=3, horizontal=True)
 # st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
